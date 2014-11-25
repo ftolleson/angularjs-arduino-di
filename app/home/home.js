@@ -12,9 +12,24 @@ angular.module('fireworksRC.home', ['ngRoute'])
   });
 }])
 .controller('HomeCtrl', ['FireworksBE_URL','$http', function(FireworksBE_URL, $http) {
+    var that = this;
 
+  that.connected = false;
 
+  var updateSystemData = function() {
+  $http.get(FireworksBE_URL).
+      success(function(data, status, headers, config) {
+          if(status === 200) {
+            that.connected = true;
+          }
+      }).
+      error(function(data, status, headers, config) {
   
+      });
+
+  };
+
+  updateSystemData();  
 
   // var updateSystemData = function () {} 
   /*

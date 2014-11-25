@@ -28,11 +28,15 @@ describe('fireworksRC.home module', function() {
 
       // init $httpBackend
 
+       $httpBackend = _$httpBackend_;
+
       // init whenGET normal  VALID_HTTP_GET
 
-      // init whenGET fire VALID_FIRE_RESPONSE
+      $httpBackend.whenGET(SIMULATOR_URL).respond(VALID_HTTP_GET);
 
-      // init ctrl HomeCtrl
+      $httpBackend.whenGET(SIMULATOR_URL + '/fire/params=0').respond(VALID_FIRE_RESPONSE);
+
+      ctrl = $controller('HomeCtrl');
 
     }));
 
@@ -50,13 +54,12 @@ describe('fireworksRC.home module', function() {
 
     it('should detect if the remote system is available', function() {
       
-      expect(false).toBe(true);
+    
+      $httpBackend.expectGET(SIMULATOR_URL);
 
-      // expectGET
+      $httpBackend.flush();
 
-      // flush
-
-      // expect connected true
+      expect(ctrl.connected).toBe(true);
 
     });
 
