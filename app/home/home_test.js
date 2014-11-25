@@ -51,13 +51,13 @@ describe('fireworksRC.home module', function() {
       $httpBackend.flush();
       expect(ctrl.connected).toBe(true);
 
-      // expect connected true
+      
 
     });
 
     it('should not fire if already launched', function () {
+
       
-      expect(false).toBe(true);
 
       // flush systemUpdate
 
@@ -77,21 +77,29 @@ describe('fireworksRC.home module', function() {
 
     it('should fire if not already launched', function() {
 
-      expect(false).toBe(true);
+      $httpBackend.flush();
 
       // flush systems update
+
+      expect(ctrl.isLaunched()).toBe(false);
 
       // expect isLaunched false
 
       // ctrl.fire 
 
+      ctrl.fire();
+
       // expectGET /fire?params=0
+
+      $httpBackend.expectGET(SIMULATOR_URL + '/fire?params=0');      
 
       // flush
 
+      $httpBackend.flush();
+
       // expect isLaunched() true
 
-
+      expect(ctrl.isLaunched()).toBe(true);
 
     });
 

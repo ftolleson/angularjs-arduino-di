@@ -16,6 +16,7 @@ angular.module('fireworksRC.home', ['ngRoute'])
   var that = this;
 
   that.connected = false;
+  that.launched = false;
 
   var updateSystemData = function () {
 
@@ -29,9 +30,25 @@ angular.module('fireworksRC.home', ['ngRoute'])
       error(function(data, status, headers, config) {
         that.connected = false;
       });
-
-
   }; 
+
+  that.isLaunched = function() {
+    return (that.launched === true);
+  };
+
+  that.fire = function () {
+
+    updateSystemData();
+
+    $http.get(FireworksBE_URL + '/fire?params=0').
+      success(function(data, status, headers, config) {
+        that.launched = true;
+      }).
+      error(function(data, status, headers, config) {
+
+      });
+
+  };
 
   updateSystemData();
 
