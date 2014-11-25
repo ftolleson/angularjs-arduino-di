@@ -26,26 +26,22 @@ describe('fireworksRC.home module', function() {
 
     beforeEach(inject(function(_$httpBackend_, $controller) {
 
-      // init httpbackend
-
       $httpBackend = _$httpBackend_;
 
-      // init whenGET normal VALID_HTTP_GET
-      // init whenGET fire VALID_FIRE_RESPONSE
+      $httpBackend.whenGET(SIMULATOR_URL).respond(VALID_HTTP_GET);
+      $httpBackend.whenGET(SIMULATOR_URL + '/fire?params=0').respond(VALID_FIRE_RESPONSE);
 
-      // init ctrl HomeCtrl
+      ctrl = $controller('HomeCtrl');
 
     }));
 
     it('should detect if the remote system is unreachable', function() {
 
-      expect(false).toBe(true);
+      $httpBackend.expectGET(SIMULATOR_URL).respond(0);
+      $httpBackend.flush();
+      
+      expect(ctrl.connected).toBe(false);
 
-      // expectGET respond 0
-
-      // flush
-
-      // expect ctrl.connected false
       
     });
 
