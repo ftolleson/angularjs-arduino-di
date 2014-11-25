@@ -26,6 +26,8 @@ describe('fireworksRC.home module', function() {
 
     beforeEach(inject(function(_$httpBackend_, $controller) {
       
+
+
       // init httpbackend
 
       // init whenGET normal + fire 
@@ -35,6 +37,8 @@ describe('fireworksRC.home module', function() {
     }));
 
     it('should detect if the remote system is unreachable', function() {
+
+      expect(false).toBe(true);
 
       // expectGET respond 0
 
@@ -46,6 +50,8 @@ describe('fireworksRC.home module', function() {
 
     it('should detect if the remote system is available', function() {
       
+      expect(false).toBe(true);
+
       // expectGET
 
       // flush
@@ -56,6 +62,8 @@ describe('fireworksRC.home module', function() {
 
     it('should not fire if already launched', function () {
       
+      expect(false).toBe(true);
+
       // flush systemUpdate
 
       // expect isLaunched false
@@ -74,6 +82,7 @@ describe('fireworksRC.home module', function() {
 
     it('should fire if not already launched', function() {
 
+      expect(false).toBe(true);
 
       // flush systems update
 
