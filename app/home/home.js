@@ -13,13 +13,24 @@ angular.module('fireworksRC.home', ['ngRoute'])
 }])
 .controller('HomeCtrl', ['FireworksBE_URL','$http', function(FireworksBE_URL, $http) {
 
-  this.connected = false;
+  var that = this;
+
+  that.connected = false;
+
+  var updateSystemData = function () {
+
+    $http.get(FireworksBE_URL).
+      success(function(data, status, headers, config) {
+        
+      }).
+      error(function(data, status, headers, config) {
+        that.connected = false;
+      });
 
 
-  
+  }; 
 
-  var updateSystemData = function () {} // $http.get(FireworksBE_URL)
-
+  updateSystemData();
 
 
 
