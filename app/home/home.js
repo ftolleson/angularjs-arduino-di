@@ -16,7 +16,16 @@ angular.module('fireworksRC.home', ['ngRoute'])
 
   
 
-  // var updateSystemData = function () {} // $http.get(FireworksBE_URL)
+  // var updateSystemData = function () {} 
+  /*
+  $http.get(FireworksBE_URL).
+      success(function(data, status, headers, config) {
+  
+      }).
+      error(function(data, status, headers, config) {
+  
+      });
+  */
 
 
 
