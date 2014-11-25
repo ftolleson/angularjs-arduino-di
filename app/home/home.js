@@ -21,6 +21,8 @@ angular.module('fireworksRC.home', ['ngRoute'])
 
   // private helper functions
 
+  // var updateSystemData = function () {}
+
   var updateSystemData = function() {
 
     $http.get(FireworksBE_URL).
