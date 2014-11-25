@@ -26,9 +26,9 @@ describe('fireworksRC.home module', function() {
 
     beforeEach(inject(function(_$httpBackend_, $controller) {
       
+      $httpBackend = _$httpBackend_;
 
-
-      // init httpbackend
+      $httpBackend.whenGET(SIMULATOR_URL)
 
       // init whenGET normal + fire 
 
