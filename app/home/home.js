@@ -21,7 +21,10 @@ angular.module('fireworksRC.home', ['ngRoute'])
 
     $http.get(FireworksBE_URL).
       success(function(data, status, headers, config) {
-        
+        if (status === 200) {
+          that.connected = true;
+        }
+
       }).
       error(function(data, status, headers, config) {
         that.connected = false;

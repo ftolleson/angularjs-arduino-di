@@ -46,12 +46,10 @@ describe('fireworksRC.home module', function() {
     });
 
     it('should detect if the remote system is available', function() {
-      
-      expect(false).toBe(true);
 
-      // expectGET
-
-      // flush
+      $httpBackend.expectGET(SIMULATOR_URL);
+      $httpBackend.flush();
+      expect(ctrl.connected).toBe(true);
 
       // expect connected true
 
