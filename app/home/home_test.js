@@ -25,12 +25,12 @@ describe('fireworksRC.home module', function() {
     var ctrl, $httpBackend;
 
     beforeEach(inject(function(_$httpBackend_, $controller) {
-      
-      $httpBackend = _$httpBackend_;
 
-      $httpBackend.whenGET(SIMULATOR_URL)
+      // init $httpBackend
 
-      // init whenGET normal + fire 
+      // init whenGET normal  VALID_HTTP_GET
+
+      // init whenGET fire VALID_FIRE_RESPONSE
 
       // init ctrl HomeCtrl
 
