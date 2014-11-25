@@ -10,6 +10,7 @@ config(['$routeProvider', function($routeProvider) {
 }]);
 
 
+
 angular.module('fireworksRC_DEV', [
   'fireworksRC',
   'ngMockE2E'

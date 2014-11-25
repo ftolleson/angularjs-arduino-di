@@ -26,62 +26,68 @@ describe('fireworksRC.home module', function() {
 
     beforeEach(inject(function(_$httpBackend_, $controller) {
       
-      $httpBackend = _$httpBackend_;
+      // init httpbackend
 
-      $httpBackend.when('GET', SIMULATOR_URL).respond(VALID_HTTP_GET);
-      $httpBackend.when('GET', SIMULATOR_URL + '/fire?params=0').respond(VALID_FIRE_RESPONSE);
+      // init whenGET normal + fire 
 
-      ctrl = $controller('HomeCtrl');
+      // init ctrl HomeCtrl
+
     }));
 
     it('should detect if the remote system is unreachable', function() {
+
+      // expectGET respond 0
+
+      // flush
+
+      // expect ctrl.connected false
       
-      $httpBackend.expectGET(SIMULATOR_URL).respond(0);
-      $httpBackend.flush();
-
-      expect(ctrl.connected).toBe(false);
-
     });
 
     it('should detect if the remote system is available', function() {
       
-      $httpBackend.expectGET(SIMULATOR_URL);
-      $httpBackend.flush();
+      // expectGET
 
-      expect(ctrl.connected).toBe(true);
+      // flush
+
+      // expect connected true
 
     });
 
     it('should not fire if already launched', function () {
       
-      $httpBackend.flush();
+      // flush systemUpdate
 
-      expect(ctrl.isLaunched()).toBe(false);
-      
-    
-      $httpBackend.expectGET(SIMULATOR_URL + '/fire?params=0');
-      ctrl.fire();
-      $httpBackend.flush();
+      // expect isLaunched false
 
-      expect(ctrl.isLaunched()).toBe(true);
+      // expect GET /fire?params=0
 
-      expect(ctrl.fire).toThrow('The system is already launched, you cannot fire it');
+      // ctrl.fire()
 
+      // flush
+
+      // expect isLaunched() true
+
+      // expect toThrow 'The system is already launched, you cannot fire it'
 
     });
 
     it('should fire if not already launched', function() {
 
 
-      $httpBackend.flush();
-      
-      expect(ctrl.isLaunched()).toBe(false);
+      // flush systems update
 
-      ctrl.fire();
-      $httpBackend.expectGET('http://simulator.local/fire?params=0');
-      $httpBackend.flush();
-      
-      expect(ctrl.isLaunched()).toBe(true);
+      // expect isLaunched false
+
+      // ctrl.fire 
+
+      // expectGET /fire?params=0
+
+      // flush
+
+      // expect isLaunched() true
+
+
 
     });
 
